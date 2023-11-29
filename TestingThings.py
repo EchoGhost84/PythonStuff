@@ -1,3 +1,5 @@
+# this file is just for where i can test things without effecting the actual project
+
 import random
 
 ammount = ['1','2','3','4','5']
