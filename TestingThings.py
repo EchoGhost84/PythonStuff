@@ -4,7 +4,7 @@ import random
 
 ammount = ['1','2','3','4','5']
 
-password_list_ammount = []
+password_list_ammount = input("how many passwords do you want?")
 
 for int in range(1, ammount + 1):
     password_list_ammount.append(random.choice(ammount))
