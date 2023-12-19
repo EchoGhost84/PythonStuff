@@ -1,3 +1,4 @@
+# just makes all the math funtions into their own class
 def addition(x, y):
     return x + y
 
@@ -10,6 +11,8 @@ def multiplication(x, y):
 def division(x, y):
     return x / y
 
+# makes sure you pick the right thing and tells you to get the first and second number
+# and adds, subtracts, multiplys, or divides them 
 while True:
     
     choice = input("1. Addition" + ' ' + "2. Multiplication" + ' ' + "3. Subtraction" + ' '  "4. Division\n")
@@ -21,6 +24,7 @@ while True:
             print("Please enter a number.")
             continue
 
+# makes sure your doing the right equation and prints it out
         if choice == "1. Addition":
             print(number1, "+", number2, "=", addition(number1, number2))
 
@@ -32,7 +36,29 @@ while True:
 
         if choice == "4. Division": 
             print(number1, "/", number2, "=", division(number1, number2))
+            
+        while():
+            pwd = ''.join(addition) + '\n'
+            with open('Math.txt', 'a') as file:
+                    file.write(pwd)
+            print(f"Your random password is: {pwd}\n")
 
+            pwd = ''.join(multiplication) + '\n'
+            with open('Math.txt', 'a') as file:
+                    file.write(pwd)
+            print(f"Your random password is: {pwd}\n")
+
+            pwd = ''.join(subtraction) + '\n'
+            with open('Math.txt', 'a') as file:
+                    file.write(pwd)
+            print(f"Your random password is: {pwd}\n")
+
+            pwd = ''.join(division) + '\n'
+            with open('Math.txt', 'a') as file:
+                    file.write(pwd)
+            print(f"Your random password is: {pwd}\n")
+
+# asks if you want to do another equation
         calculation = input("another? (yes/no): \n")
         if calculation == "no":
                 break
