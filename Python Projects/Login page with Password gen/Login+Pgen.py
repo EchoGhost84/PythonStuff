@@ -1,73 +1,81 @@
 #note this may not work and its in a test phase
-
 import random
 
-letters = [
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
     'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
-    'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-]
+    'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
-
 Userlist = ["Nathan","nathan"]
 adminPassword = ["ADMINPASSWORD"]
 Passwordlist = ["Password1","password1"]
 
-while():
-    if input() in Userlist:
-        print("User Correct")
-    else:
-        print("User Incorrect")
+#makes sure the username and password are correct
+def CorrectUserPassword():
+    while():
+        if input() in Userlist:
+            print("User Correct")
+        else:
+            print("User Incorrect")
 
-    if input() in Passwordlist:
-            print("Password Correct")
-    else:
-            print("Password Incorrect")
-    break
+        if input() in Passwordlist:
+                print("Password Correct")
+        else:
+                print("Password Incorrect")
+        break
 
-#adds input to the userlist and adds it to a file 
-while input == adminPassword:
-    print("What would you like to add to the User List?")
-    Userlist.append(input)
+#adds a password to the pasword list if needed to :
+def AddPassword():
+    while input == adminPassword:
+        print("What would you like to add to the User List?")
+        Userlist.append(input)
     print("Updated List", Userlist)
     with open('PasswordsList.txt', 'a') as file:
         file.write(Userlist)
-print(f": User list: {Userlist}\n")
+    print(f": User list: {Userlist}\n")
 
-#password gen for the login
-while input == adminPassword:
-     print("Welcome to the PyPassword Generator!")
-nr_letters = int(input("How many letters would you like in your password?\n"))
-nr_symbols = int(input("How many symbols would you like?\n"))
-nr_numbers = int(input("How many numbers would you like?\n"))
+#removes a password from the list of passwords if needed to 
+def RemovePassword():
+    removePassword = input("Enter the password you want to remove")
+    while removePassword:
+                print("what password would you like to remove?")
+                Passwordlist.remove(input()) 
+                print("Password(s) Removed" + "your new list is:", Passwordlist)
 
-password_list = []
+#just a password genorator that saves to a file
+def PasswordGen():
+    while input == adminPassword:
+            print("Welcome to the PyPassword Generator!")
+            nr_letters = int(input("How many letters would you like in your password?\n"))
+            nr_symbols = int(input("How many symbols would you like?\n"))
+            nr_numbers = int(input("How many numbers would you like?\n"))
 
-for char in range(1, nr_letters + 1):
-    password_list.append(random.choice(letters))
+            password_list = []
 
-for char in range(1, nr_symbols + 1):
-    password_list.append(random.choice(numbers))
+            for char in range(1, nr_letters + 1):
+                password_list.append(random.choice(letters))
 
-for char in range(1, nr_numbers + 1):
-    password_list.append(random.choice(symbols))
+            for char in range(1, nr_symbols + 1):
+                password_list.append(random.choice(numbers))
 
-random.shuffle(password_list)
+            for char in range(1, nr_numbers + 1):
+                password_list.append(random.choice(symbols))
 
-password = ""
-for char in password_list:
-    password += char
+            random.shuffle(password_list)
 
-# convert list to string
-pwd = ''.join(password_list) + '\n'
+            password = ""
+            for char in password_list:
+                password += char
 
-# saves the password to a file
-with open('PasswordsList.txt', 'a') as file:
-        file.write(pwd)
-print(f"Your random password is: {pwd}\n")
+            # convert list to string
+            pwd = ''.join(password_list) + '\n'
 
-Passwordlist.append(pwd)
-print("Updated List", Passwordlist)
+            # saves the password to a file
+            with open('PasswordsList.txt', 'a') as file:
+                    file.write(pwd)
+            print(f"Your random password is: {pwd}\n")
+
+            Passwordlist.append(pwd)
+            print("Updated List", Passwordlist)
 
