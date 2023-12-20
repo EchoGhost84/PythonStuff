@@ -12,7 +12,7 @@ adminPassword = ["ADMINPASSWORD"]
 Passwordlist = ["Password1","password1"]
 
 #makes sure the username and password are correct
-def CorrectUserPassword():
+def userpassword():
     while():
         if input() in Userlist:
             print("User Correct")
@@ -26,7 +26,7 @@ def CorrectUserPassword():
         break
 
 #adds a password to the pasword list if needed to :
-def AddPassword():
+def add():
     while input == adminPassword:
         print("What would you like to add to the User List?")
         Userlist.append(input)
@@ -36,7 +36,7 @@ def AddPassword():
     print(f": User list: {Userlist}\n")
 
 #removes a password from the list of passwords if needed to 
-def RemovePassword():
+def remove():
     removePassword = input("Enter the password you want to remove")
     while removePassword:
                 print("what password would you like to remove?")
@@ -44,7 +44,7 @@ def RemovePassword():
                 print("Password(s) Removed" + "your new list is:", Passwordlist)
 
 #just a password genorator that saves to a file
-def PasswordGen():
+def gen():
     while input == adminPassword:
             print("Welcome to the PyPassword Generator!")
             nr_letters = int(input("How many letters would you like in your password?\n"))
@@ -78,4 +78,10 @@ def PasswordGen():
 
             Passwordlist.append(pwd)
             print("Updated List", Passwordlist)
+
+userpassword()
+add()
+remove()
+gen()
+
 
