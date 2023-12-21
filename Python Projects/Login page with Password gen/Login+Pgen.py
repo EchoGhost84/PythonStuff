@@ -12,36 +12,29 @@ adminPassword = ["ADMINPASSWORD"]
 Passwordlist = ["Password1","password1"]
 
 #makes sure the username and password are correct
-def userpassword():
-    while():
-        if input() in Userlist:
-            print("User Correct")
-        else:
-            print("User Incorrect")
+def user():
+    print("Welcome to the Login Page")
+    print(input("Please enter your username\n"))
 
-        if input() in Passwordlist:
-                print("Password Correct")
-        else:
-                print("Password Incorrect")
-        break
+    while input() in Userlist:
+        print("User Correct")
+    if input not in Userlist:
+        print("User Incorrect")
 
-#adds a password to the pasword list if needed to :
-def add():
-    while input == adminPassword:
-        print("What would you like to add to the User List?")
-        Userlist.append(input)
-    print("Updated List", Userlist)
-    with open('PasswordsList.txt', 'a') as file:
-        file.write(Userlist)
-    print(f": User list: {Userlist}\n")
+    print(input("Pease enter your password\n"))
+    while input() in Passwordlist:
+        print("User Correct")
+    if input not in Passwordlist:
+        print("User Incorrect")
 
 #removes a password from the list of passwords if needed to 
 def remove():
-    removePassword = input("Enter the password you want to remove")
-    while removePassword:
-                print("what password would you like to remove?")
-                Passwordlist.remove(input()) 
-                print("Password(s) Removed" + "your new list is:", Passwordlist)
+    if input == adminPassword:
+        rempass = input("Enter the password you want to remove")
+        while rempass:
+            print("what password would you like to remove?")
+            Passwordlist.remove(input()) 
+            print("Password(s) Removed" + "your new list is:", Passwordlist)
 
 #just a password genorator that saves to a file
 def gen():
@@ -68,20 +61,36 @@ def gen():
             for char in password_list:
                 password += char
 
-            # convert list to string
-            pwd = ''.join(password_list) + '\n'
-
-            # saves the password to a file
-            with open('PasswordsList.txt', 'a') as file:
-                    file.write(pwd)
-            print(f"Your random password is: {pwd}\n")
-
-            Passwordlist.append(pwd)
+            print(input("Would you like to add this password to the list?"))
+            while input in list == ["yes", "Yes", "YES"]:
+                password = ''.join(password_list) + '\n'
+                Passwordlist.append(password)
             print("Updated List", Passwordlist)
+            with open('PasswordsList.txt', 'a') as file:
+                file.write(Passwordlist)
+            print(f": Updated list: {Passwordlist}\n") 
+            while(): 
+                input in list == ["no", "No", "NO", "nO"]
+                break
 
-userpassword()
-add()
-remove()
+
+user()
 gen()
+remove()
 
 
+
+
+
+                            #Just incase if i need it for later i dont have to redo the code#
+
+#add()
+#adds a password to the pasword list if needed to :
+# def add():
+#     while input == adminPassword:
+#         print("What would you like to add to the User List?")
+#         Userlist.append(input)
+#     print("Updated List", Userlist)
+#     with open('PasswordsList.txt', 'a') as file:
+#         file.write(Userlist)
+#     print(f": User list: {Userlist}\n")
