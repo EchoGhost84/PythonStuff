@@ -25,19 +25,19 @@ for root, dirs, files in os.walk(r''):
 
 for root, dirs, files in os.walk(r''):
      for name in files:
-          if name == 'Adminuser.txt':
+          if name == 'AdminUser.txt':
                print(os.path.abspath(os.path.join(root, name)))
                
 uls = open(r'UserList.txt').readlines()
 print("Found the txt file Here:" + os.path.abspath(uls))
 
-pwl = 'Passwordlist.txt'
+pwl = open(r'Passwordlist.txt').readlines()
 print("Found the txt file Here:" + os.path.abspath(pwl))
 
-adu = 'AdminPassword.txt'
+adu = open(r'AdminPassword.txt').readlines()
 print("Found the txt file Here:" + os.path.abspath(adu))
 
-adp = 'AdminUser.txt'
+adp = open(r'AdminUser.txt').readlines()
 print("Found the txt file Here:" + os.path.abspath(adp))
 
 if FileNotFoundError() or FileExistsError():
@@ -47,11 +47,11 @@ else:
 
 Userlist = uls
 Userlist = [username.strip() for username in Userlist]
-Passwordlist = open(pwl).readlines()
+Passwordlist = pwl
 Passwordlist = [username.strip() for username in Passwordlist]
-adminUsername =  open(adu).readlines()
+adminUsername =  adu
 adminUsername = [username.strip() for username in adminUsername]
-adminPassword =  open(adp).readlines()
+adminPassword =  adp
 adminPassword = [username.strip() for username in adminPassword]
 
 username = adminUsername or Userlist
