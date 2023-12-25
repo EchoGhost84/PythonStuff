@@ -18,7 +18,7 @@ else:
      print("we found the files")
 
 # i have this here incase the other way doesnt work and i can just copy and paste it if needed
-Userlist = open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/UserList.txt",'r').readlines()
+Userlist = open(r'r').readlines()
 Userlist = [username.strip() for username in Userlist]
 Passwordlist = open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt",'r+').readlines()
 Passwordlist = [username.strip() for username in Passwordlist]
@@ -26,3 +26,10 @@ adminUsername =  open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Proje
 adminUsername = [username.strip() for username in adminUsername]
 adminPassword =  open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/AdminPassword.txt",'r').readlines()
 adminPassword = [username.strip() for username in adminPassword]
+
+
+
+for root, dirs, files in os.walk(r''):
+     for name in files:
+          if name == Passwordlist.txt:
+               print(os.path.abspath(os.path.join(root, name)))

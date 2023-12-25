@@ -9,21 +9,43 @@ numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 # uls = UserList, pwl = PasswordList, adu = AdminUser, and adp = AdminPassword
+for root, dirs, files in os.walk(r''):
+    for name in files:
+          if name == 'UserList.txt':
+               print(os.path.abspath(os.path.join(root, name)))
+for root, dirs, files in os.walk(r''):
+     for name in files:
+          if name == 'Passwordlist.txt':
+               print(os.path.abspath(os.path.join(root, name)))
 
-uls = 'UserList.txt'
+for root, dirs, files in os.walk(r''):
+     for name in files:
+          if name == 'AdminPassword.txt':
+               print(os.path.abspath(os.path.join(root, name)))
+
+for root, dirs, files in os.walk(r''):
+     for name in files:
+          if name == 'Adminuser.txt':
+               print(os.path.abspath(os.path.join(root, name)))
+               
+uls = open(r'UserList.txt').readlines()
 print("Found the txt file Here:" + os.path.abspath(uls))
+
 pwl = 'Passwordlist.txt'
 print("Found the txt file Here:" + os.path.abspath(pwl))
+
 adu = 'AdminPassword.txt'
 print("Found the txt file Here:" + os.path.abspath(adu))
+
 adp = 'AdminUser.txt'
 print("Found the txt file Here:" + os.path.abspath(adp))
+
 if FileNotFoundError() or FileExistsError():
     print("check if the file exists or where the file is")
 else: 
      print("we found the files")
 
-Userlist = open(uls).readlines()
+Userlist = uls
 Userlist = [username.strip() for username in Userlist]
 Passwordlist = open(pwl).readlines()
 Passwordlist = [username.strip() for username in Passwordlist]
