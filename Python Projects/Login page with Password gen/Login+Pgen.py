@@ -1,5 +1,6 @@
 #note this may not work and its in a test phase
 import random
+import os 
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
     'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
@@ -7,13 +8,28 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-Userlist = open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/UserList.txt",'r').readlines()
+# uls = UserList, pwl = PasswordList, adu = AdminUser, and adp = AdminPassword
+
+uls = 'UserList.txt'
+print("Found the txt file Here:" + os.path.abspath(uls))
+pwl = 'Passwordlist.txt'
+print("Found the txt file Here:" + os.path.abspath(pwl))
+adu = 'AdminPassword.txt'
+print("Found the txt file Here:" + os.path.abspath(adu))
+adp = 'AdminUser.txt'
+print("Found the txt file Here:" + os.path.abspath(adp))
+if FileNotFoundError() or FileExistsError():
+    print("check if the file exists or where the file is")
+else: 
+     print("we found the files")
+
+Userlist = open(uls).readlines()
 Userlist = [username.strip() for username in Userlist]
-Passwordlist = open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt",'r+').readlines()
+Passwordlist = open(pwl).readlines()
 Passwordlist = [username.strip() for username in Passwordlist]
-adminUsername =  open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/AdminUser.txt",'r').readlines()
+adminUsername =  open(adu).readlines()
 adminUsername = [username.strip() for username in adminUsername]
-adminPassword =  open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/AdminPassword.txt",'r').readlines()
+adminPassword =  open(adp).readlines()
 adminPassword = [username.strip() for username in adminPassword]
 
 username = adminUsername or Userlist
