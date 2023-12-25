@@ -15,7 +15,7 @@ for root, dirs, files in os.walk(r''):
                print(os.path.abspath(os.path.join(root, name)))
 for root, dirs, files in os.walk(r''):
      for name in files:
-          if name == 'Passwordlist.txt':
+          if name == 'Passwordlist.txt':pass    
                print(os.path.abspath(os.path.join(root, name)))
 
 for root, dirs, files in os.walk(r''):
