@@ -28,27 +28,37 @@ password = adminPassword or Passwordlist
 # uls = UserList, pwl = PasswordList, adu = AdminUser, and adp = AdminPassword
 
 def user():
-    print("Welcome to the Login Page")
-    print("Please enter your username")
     global username
     global password
 
-    username = input().strip().lower()
+    # Introduce a while loop to keep prompting until correct credentials are entered
+    while True:
+        print("Welcome to the Login Page")
+        print("Please enter your username")
+        username = input().strip().lower()
 
-    if username == "":
-        print("No input detected. Please try again.")
-        return
+        # Check if no username is entered and prompt the user to try again
+        if username == "":
+            print("No input detected. Please try again.")
+            continue  # Restart the loop if no username is entered
 
-    if username in Userlist or username in adminUsername:
-        print("Username Correct")
-        # Ask for password only if the username is correct
-        password = input("Please enter your password: ").strip()
-        if password in Passwordlist or password in adminPassword:
-            print("Password Correct")
+        # Check if the entered username is correct
+        if username in Userlist or username in adminUsername:
+            print("Username Correct")
+            # Ask for password only if the username is correct
+            password = input("Please enter your password: ").strip()
+
+            # Check if the entered password is correct
+            if password in Passwordlist or password in adminPassword:
+                print("Password Correct")
+                break  # Break out of the loop if both username and password are correct
+            else:
+                print("Password Incorrect. Please try again.")
         else:
-            print("Password Incorrect")
-    else:
-        print("Username Incorrect")
+            print("Username Incorrect. Please try again.")
+
+# Call the user function to start the login process
+user()
 
 #removes a password from the list of passwords if needed to 
 def remove():
@@ -63,9 +73,9 @@ def remove():
 def find_and_read_files(directory_to_search, files_to_find):
     global username
     global password
-    
+
     if username and password in adminUsername or adminPassword:
-        print("finding files and their contents please wait...")
+        print("finding files please wait...")
     file_contents = {}
     for root, dirs, files in os.walk(directory_to_search):
         for filename in files_to_find:
@@ -78,7 +88,7 @@ def find_and_read_files(directory_to_search, files_to_find):
 
     for filename, content in file_contents.items():
         if content is not None:
-            print(f"Content of {filename}:\n{content}")
+            print(f"{filename}:\n")
         else:
             print(f"{filename} not found.")
 
@@ -133,7 +143,7 @@ while True:
     if choice == "1":
         remove()
     elif choice == "2":
-        find_and_read_files()
+        find_and_read_files(directory_to_search, files_to_find)
     elif choice == "3":
         gen()
     elif choice == "4":
