@@ -2,7 +2,8 @@
 import random
 import os 
 from pathlib import Path
-
+global username
+global password
 # Define character sets for password generation
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
@@ -19,14 +20,14 @@ with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with 
     Passwordlist = [password.strip() for password in password_file]
 
 with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/AdminUser.txt") as admin_user_file:
-    adminUsername = [admin.strip() for admin in admin_user_file]
+    AdminUsername = [admin.strip() for admin in admin_user_file]
 
 with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/AdminPassword.txt") as admin_password_file:
-    adminPassword = [admin.strip() for admin in admin_password_file]
+    AdminPassword = [admin.strip() for admin in admin_password_file]
 
 # Set the username and password to adminUsername or Userlist and adminPassword or Passwordlist
-username = adminUsername or Userlist
-password = adminPassword or Passwordlist
+username = AdminUsername or Userlist
+password = AdminPassword or Passwordlist
 
 # Explanation of code structure and purpose:
 # The code reads user-related files, such as UserList.txt and PasswordList.txt, and strips their contents to remove any leading or trailing spaces.
@@ -36,7 +37,6 @@ password = adminPassword or Passwordlist
 def user():
     global username
     global password
-
     # Introduce a while loop to keep prompting until correct credentials are entered
     while True:
         print("Welcome to the Login Page")
@@ -49,13 +49,13 @@ def user():
             continue  # Restart the loop if no username is entered
 
         # Check if the entered username is correct
-        if username in Userlist or username in adminUsername:
+        if username in Userlist or username in AdminUsername:
             print("Username Correct")
             # Ask for password only if the username is correct
             password = input("Please enter your password: ").strip()
 
             # Check if the entered password is correct
-            if password in Passwordlist or password in adminPassword:
+            if password in Passwordlist or password in AdminPassword:
                 print("Password Correct")
                 break  # Break out of the loop if both username and password are correct
             else:
@@ -68,18 +68,15 @@ user()
 def remove():
         global username
         global password
-
-        while username and password in adminUsername or adminPassword:
+        
+        while username and password in AdminUsername or AdminPassword:
             input("Enter the password you want to remove\n")
             Passwordlist.remove(input()) 
             print("Password(s) Removed" + "your new list is:", Passwordlist)
 
 def find_and_read_files(directory_to_search, files_to_find):
-    global username
-    global password
-
     # Check if the user is an admin before proceeding
-    if username and password in adminUsername or adminPassword:
+    if username and password in AdminUsername or AdminPassword:
         print("Finding files, please wait...")
 
     file_contents = {}
@@ -111,11 +108,10 @@ result = find_and_read_files(directory_to_search, files_to_find)
 
 # just a password genorator that saves to a file
 def gen():
-    global password
     global username
-
+    global password
     # Start a loop to generate passwords as long as the user is an admin
-    while username and password in adminUsername or adminPassword:
+    while username and password in AdminUsername or AdminPassword:
         print("Welcome to the Password Generator!")
 
         # Prompt the user for the desired number of letters, symbols, and numbers
