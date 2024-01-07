@@ -1,35 +1,13 @@
-import os
+def remove():
+    global Passwordlist
 
-txt = 'Passwordlist.txt'
-print(os.path.abspath(txt))
+    print("Remove Password")
+    password_to_remove = input("Enter the password you want to remove: ")
 
-# i have this here incase the other way doesnt work and i can just copy and paste it if needed
-uls = 'UserList.txt'
-print("Found the .txt file Here:" + os.path.abspath(uls))
-pwl = 'Passwordlist.txt'
-print("Found the .txt file Here:" + os.path.abspath(pwl))
-adu = 'AdminPassword.txt'
-print("Found the txt file Here:" + os.path.abspath(adu))
-adp = 'AdminUser.txt'
-print("Found the txt file Here:" + os.path.abspath(adp))
-if FileNotFoundError() or FileExistsError():
-    print("check if the file exists or where the file is")
-else: 
-     print("we found the files")
-
-# i have this here incase the other way doesnt work and i can just copy and paste it if needed
-Userlist = open(r'r').readlines()
-Userlist = [username.strip() for username in Userlist]
-Passwordlist = open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt",'r+').readlines()
-Passwordlist = [username.strip() for username in Passwordlist]
-adminUsername =  open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/AdminUser.txt",'r').readlines()
-adminUsername = [username.strip() for username in adminUsername]
-adminPassword =  open(r"C:/Users/Natha/OneDrive/Desktop/PythonStuff/Python Projects/Login page with Password gen/AdminPassword.txt",'r').readlines()
-adminPassword = [username.strip() for username in adminPassword]
-
-
-
-for root, dirs, files in os.walk(r''):
-     for name in files:
-          if name == Passwordlist.txt:
-               print(os.path.abspath(os.path.join(root, name)))
+    if password_to_remove in Passwordlist:
+        Passwordlist.remove(password_to_remove)
+        with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt", "w") as file:
+            file.write("\n".join(Passwordlist))
+        print(f"Password removed. Updated list: {Passwordlist}")
+    else:
+        print("Password not found in the list.")
