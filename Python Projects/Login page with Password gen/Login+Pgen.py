@@ -31,6 +31,7 @@ def user():
     print("Welcome to the Login Page")
     print("Please enter your username")
     global username
+    global password
 
     username = input().strip().lower()
 
@@ -51,12 +52,18 @@ def user():
 
 #removes a password from the list of passwords if needed to 
 def remove():
+        global username
+        global password
+
         while username and password in adminUsername or adminPassword:
             input("Enter the password you want to remove\n")
             Passwordlist.remove(input()) 
             print("Password(s) Removed" + "your new list is:", Passwordlist)
 
 def find_and_read_files(directory_to_search, files_to_find):
+    global username
+    global password
+    
     if username and password in adminUsername or adminPassword:
         print("finding files and their contents please wait...")
     file_contents = {}
@@ -84,6 +91,9 @@ result = find_and_read_files(directory_to_search, files_to_find)
 
 #just a password genorator that saves to a file
 def gen():
+            global password
+            global username
+
             while username and password in adminUsername or adminPassword:
                 print("Welcome to the Password Generator!")
                 nr_letters = int(input("How many letters would you like in your password?\n"))
