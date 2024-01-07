@@ -1,4 +1,4 @@
-#note this may not work and its in a test phase
+# note this may not work and its in a test phase
 import random
 import os 
 from pathlib import Path
@@ -10,6 +10,7 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
+# opens the file(s) and strips the contents of the files to remove anything at the end of the contents of said file(s) 
 with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/UserList.txt") as user_file:
     Userlist = [username.strip() for username in user_file]
 
@@ -22,10 +23,9 @@ with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with 
 with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/AdminPassword.txt") as admin_password_file:
     adminPassword = [admin.strip() for admin in admin_password_file]
 
+# sets the username and password to adminusername or userlist and adminpassword or passwordlist to make it more compact 
 username = adminUsername or Userlist
 password = adminPassword or Passwordlist
-
-# uls = UserList, pwl = PasswordList, adu = AdminUser, and adp = AdminPassword
 
 def user():
     global username
@@ -56,11 +56,9 @@ def user():
                 print("Password Incorrect. Please try again.")
         else:
             print("Username Incorrect. Please try again.")
-
-# Call the user function to start the login process
 user()
 
-#removes a password from the list of passwords if needed to 
+# removes a password from the list of passwords if needed to 
 def remove():
         global username
         global password
@@ -99,7 +97,7 @@ directory_to_search = "C:/"  # Replace with the desired directory
 files_to_find = ['UserList.txt', 'PasswordList.txt', 'AdminUser.txt', 'AdminPassword.txt']
 result = find_and_read_files(directory_to_search, files_to_find)
 
-#just a password genorator that saves to a file
+# just a password genorator that saves to a file
 def gen():
             global password
             global username
@@ -134,8 +132,7 @@ def gen():
                     file.write("\n".join(Passwordlist))
                 print(f": Updated list: {Passwordlist}\n") 
                 break
-
-user()
+            
 while True:
     print("What would you like to do?")
     choice = input("1. Remove Password  2. Find And Read Files  3. Generate password 4. quit\n")
