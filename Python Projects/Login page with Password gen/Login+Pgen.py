@@ -1,15 +1,28 @@
-# note this may not work and its in a test phase
+
+print(" ===============================================================")
+print("                      Made by EchoGhost84                       ")
+print("                                                                ")
+print("                   This might not work fully                    ")
+print("           https://github.com/EchoGhost84/PythonStuff           ")
+print("    Hope you like this program, One of my first big projects    ")
+print("                                                                ")
+print("                 if there is any improvments                    ")
+print("               please feel free to let me know                  ")
+print("                          Thank You!                            ")
+print("=============================================================== ")
+
+
 import random
 import os 
 from pathlib import Path
 global username
 global password
-# Define character sets for password generation
+#Define character sets for password generation
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
     'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
     'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+numbers = [')', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
 # Open and read user-related files, stripping contents to remove leading/trailing spaces
