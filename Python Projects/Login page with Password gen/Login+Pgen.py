@@ -1,22 +1,10 @@
-
-print(" ===============================================================")
-print("                      Made by EchoGhost84                       ")
-print("                                                                ")
-print("                   This might not work fully                    ")
-print("           https://github.com/EchoGhost84/PythonStuff           ")
-print("    Hope you like this program, One of my first big projects    ")
-print("                                                                ")
-print("                 if there is any improvments                    ")
-print("               please feel free to let me know                  ")
-print("                          Thank You!                            ")
-print("=============================================================== ")
-
-
 import random
 import os 
 from pathlib import Path
+
 global username
 global password
+
 #Define character sets for password generation
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
@@ -25,12 +13,14 @@ letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
 numbers = [')', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
+Passwordlist = open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt")
+
 # Open and read user-related files, stripping contents to remove leading/trailing spaces
 with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/UserList.txt") as user_file:
     Userlist = [username.strip() for username in user_file]
 
-with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt") as password_file:
-    Passwordlist = [password.strip() for password in password_file]
+with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt") as Password_file:
+    Passwordlist = [username.strip() for username in Password_file]
 
 with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/AdminUser.txt") as admin_user_file:
     AdminUsername = [admin.strip() for admin in admin_user_file]
@@ -65,7 +55,7 @@ def user():
         if username in Userlist or username in AdminUsername:
             print("Username Correct")
             # Ask for password only if the username is correct
-            password = input("Please enter your password: ").strip()
+            password = input("Please enter your password:\n").strip()
 
             # Check if the entered password is correct
             if password in Passwordlist or password in AdminPassword:
@@ -83,39 +73,38 @@ def remove():
         global password
         
         while username and password in AdminUsername or AdminPassword:
-            input("Enter the password you want to remove\n")
-            Passwordlist.remove(input()) 
+            Passwordlist.remove(input("Enter the password you want to remove\n")) 
             print("Password(s) Removed" + "your new list is:", Passwordlist)
 
 def find_and_read_files(directory_to_search, files_to_find):
-    # Check if the user is an admin before proceeding
+        # Check if the user is an admin before proceeding
     if username and password in AdminUsername or AdminPassword:
         print("Finding files, please wait...")
 
     file_contents = {}
-    
-    # Walk through the specified directory and search for the specified files
+        
+        # Walk through the specified directory and search for the specified files
     for root, dirs, files in os.walk(directory_to_search):
         for filename in files_to_find:
             if filename in files:
                 file_path = os.path.join(root, filename)
-                
-                # Open and read the file
+                    
+                    # Open and read the file
                 with open(file_path, 'r') as file:
                     content = file.read()
                     file_contents[filename] = content
 
-    # Display the contents of the found files
+        # Display the contents of the found files
     for filename, content in file_contents.items():
         if content is not None:
-            print(f"{filename}:\n")
+                print(f"{filename}:\n")
         else:
             print(f"{filename} not found.")
 
     return file_contents
 
 # Example call with a list of filenames
-directory_to_search = "C:/"  # Replace with the desired directory
+directory_to_search = "C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen"
 files_to_find = ['UserList.txt', 'PasswordList.txt', 'AdminUser.txt', 'AdminPassword.txt']
 result = find_and_read_files(directory_to_search, files_to_find)
 
@@ -126,6 +115,9 @@ def gen():
     # Start a loop to generate passwords as long as the user is an admin
     while username and password in AdminUsername or AdminPassword:
         print("Welcome to the Password Generator!")
+
+        #Asks for your name
+        your_name = input("What is your name?\n")
 
         # Prompt the user for the desired number of letters, symbols, and numbers
         nr_letters = int(input("How many letters would you like in your password?\n"))
@@ -141,7 +133,7 @@ def gen():
         # Generate symbols for the password
         for char in range(1, nr_symbols + 1):
             password_list.append(random.choice(numbers))
-
+        
         # Generate numbers for the password
         for char in range(1, nr_numbers + 1):
             password_list.append(random.choice(symbols))
@@ -158,13 +150,11 @@ def gen():
         print(input("This password will now be added to the list!!!" + " " + password + "\n"))
 
         # Update the password list and save it to a file
-        password = ''.join(password_list) + '\n'
-        Passwordlist.append(password)
-        with open("C:/Users/Natha/Desktop/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt", "w") as file:
-            file.write("\n".join(Passwordlist))
-        
-        # Print the updated list and break out of the loop
-        print(f": Updated list: {Passwordlist}\n")
+        password = ''.join(password_list) + " " + "(" + your_name + ")" + "\n"
+        with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt", 'a') as file:
+            file.writelines(password)
+
+            print("Your Password has been added to the list!!!")
         break
 
 while True:
