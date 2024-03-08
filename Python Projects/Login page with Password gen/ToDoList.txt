@@ -1,0 +1,4 @@
+this is where i can put my thoughts about what i want to do with the project
+
+1. make an area where the non admins can go to and restrict the admin only area.
+

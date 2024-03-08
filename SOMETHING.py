@@ -1,8 +1,8 @@
 import os
+print("1.", "2.")
+choice = input("Pick your option")
 
-file_path = 'PasswordList.txt'
-if os.path.isfile(file_path):
-    with open(file_path, 'r') as f:
-        print(f.read())
-else:
-    print('The file does not exist.')
+if choice == "1":
+    os.remove()
+elif choice == "2":
+    print("you did it congrats")

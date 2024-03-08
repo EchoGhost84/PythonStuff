@@ -32,10 +32,15 @@ with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with 
 username = AdminUsername or Userlist
 password = AdminPassword or Passwordlist
 
+adminlogin = AdminUsername
+adminpass = AdminPassword
+userlogin = Userlist
+userPass = Passwordlist
 # Explanation of code structure and purpose:
 # The code reads user-related files, such as UserList.txt and PasswordList.txt, and strips their contents to remove any leading or trailing spaces.
 # It uses the admin-related files (AdminUser.txt and AdminPassword.txt) to set the admin credentials.
 # The username and password are then set to either the admin credentials or the user credentials, making the code more compact.
+
 
 def user():
     global username
@@ -45,6 +50,13 @@ def user():
         print("Welcome to the Login Page")
         print("Please enter your username")
         username = input().strip().lower()
+        
+        #should check if you have the correct creds before going to the next area
+
+        if userlogin or userPass in input():
+            print("What would you like to do?")
+        else:
+            continue
 
         # Check if no username is entered and prompt the user to try again
         if username == "":
@@ -60,14 +72,35 @@ def user():
             # Check if the entered password is correct
             if password in Passwordlist or password in AdminPassword:
                 print("Password Correct")
-                break  # Break out of the loop if both username and password are correct
+                    #the options for the user
+                if password in Passwordlist:
+                    print("1. Chat file" + " " + "4. Break")
+                        #asks the user what they would like to do
+                    choice = input("What would you like to do?\n")
+                    while True:
+                        if choice == "1":
+                            WhatToDo()
+                        elif choice == "4":
+                                break
+                #Break out of the loop if both username and password are correct
+                break
             else:
                 print("Password Incorrect. Please try again.")
         else:
             print("Username Incorrect. Please try again.")
+    
 user()
 
-# removes a password from the list of passwords if needed to 
+def WhatToDo():
+    with open("Chat.txt") as file:
+            file.writable(input("What would you like to say?"))
+            if input() == True:
+                print("message send sucsessfully!")
+                input("Would you like to send another message?")
+                if input() == "yes":
+                    return choice == "1"
+                file.close()
+                
 def remove():
         global username
         global password
@@ -118,6 +151,7 @@ def gen():
 
         #Asks for your name
         your_name = input("What is your name?\n")
+        your_use = input("What are you going to be using this Password for?\n")
 
         # Prompt the user for the desired number of letters, symbols, and numbers
         nr_letters = int(input("How many letters would you like in your password?\n"))
@@ -150,7 +184,7 @@ def gen():
         print(input("This password will now be added to the list!!!" + " " + password + "\n"))
 
         # Update the password list and save it to a file
-        password = ''.join(password_list) + " " + "(" + your_name + ")" + "\n"
+        password = ''.join(password_list) + " " + "(" + your_name + ")" + " " + "(" + your_use + ")" + "\n"
         with open("C:/Users/Natha/Downloads/PythonStuff/Python Projects/Login page with Password gen/PasswordList.txt", 'a') as file:
             file.writelines(password)
 
